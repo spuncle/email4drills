@@ -1,0 +1,888 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0084)https://mail.tj.gov.cn/coremail/XT5/nf/list.jsp?sid=DARzpyQQfJcQTGiNMyQQeeTAAWfsTttQ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="referrer" content="origin-when-cross-origin">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="renderer" content="webkit">
+<!--[if IE 9]>
+<link href="/coremail/XT5/assets/5d61e4c0/css/crash_IE9.css" rel="stylesheet" type="text/css" charset="iso-8859-1">
+<![endif]-->
+<link href="./jquery.ui.all.css" rel="stylesheet" type="text/css" charset="iso-8859-1">
+
+
+
+
+
+<link href="./var1.css" rel="stylesheet" type="text/css" charset="utf-8">
+<link href="./var1_blue.css" rel="stylesheet" type="text/css" charset="iso-8859-1">
+
+<script type="text/javascript" src="./common.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./prototype.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./prototype.ex.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./dom.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./loginCommon.c2f53.js"></script>
+        <script type="text/javascript">webpackJsonp[0][1]['463']({});</script><script type="text/javascript">$.browser = {chrome: true, version: 125}</script>
+<script type="text/javascript" src="./Notification.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./jquery.ui.core.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./jquery.ui.widget.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./jquery.ui.progressbar.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./jquery.ui.tabs.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./jquery.ui.datepicker.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./jquery-ui-i18n.js"></script>
+<script type="text/javascript" src="./uicommon.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./uidialog.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./read.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./verifyformat.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./simpleclient.js"></script>
+<script type="text/javascript" src="./auth2Lock.js"></script>
+<script type="text/javascript" src="./PluginManager.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./select.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./sigbtn.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./menu.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./pagination.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./crash_resize.js" charset="iso-8859-1"></script>
+
+
+
+<script type="text/javascript" charset="UTF-8" src="./resource.js"></script>
+
+
+
+
+<script type="text/javascript" charset="UTF-8" src="./calendar.js"></script>
+
+<script type="text/javascript" src="./commonControls.js" charset="iso-8859-1"></script>
+    <link rel="stylesheet" type="text/css" href="./XT5.c2f53-1.css">
+<link rel="stylesheet" type="text/css" href="./XT5.c2f53-2.css">
+<script type="text/javascript">
+__webpack_public_path__="/coremail/bundle/"
+__CM_PV__='5d61e4c0'
+</script>
+<script type="text/javascript" src="./$XT5.c2f53.js"></script>
+    
+    <link class="skin-scheme blue" rel="stylesheet" href="./skin.css">
+    <script type="text/javascript" src="./uploadBridge.js" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="./TrsUpload.js" charset="iso-8859-1"></script>
+    <script type="text/javascript" charset="iso-8859-1" src="./CMUpload.js"></script>
+    <script type="text/javascript" src="./simpleclient.js" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="./nf.js" charset="iso-8859-1"></script>
+    <script type="text/javascript"><!--
+
+    var bigFileSelector = new NfBigFileSelection();
+    /**
+     * 保证任何时候每个 NfBigFileSelection 对象最多只能拥有一个对话框
+     */
+    function NfBigFileSelection() {
+        this.initDialog = funInitDialog;
+
+        var selector = this;
+        selector.dialog = null;
+        var dForm = null;
+        var ROOT_FID = 0;
+        var idx = 0;
+        var initializing = false;
+
+        function getHtml(pluginInfo) {
+            var isSupportMutiSelect = CMUpload.CMHasHTML5UploadByBigFile() || PluginManager.isLoaded();
+            var crossDomain = false;
+            var currentTrsFileCount = 0;
+            var overflow = false;
+            var overflowMsg = '<div class="bigAttachUploadInfobar" style="padding-left:0; margin-left:2px; line-height: 130%; width:472px; height: auto;">'
+                    + ""
+                    + '</div>';
+            var html = "";
+            if( CMUpload.CMHasHTML5UploadByBigFile() && crossDomain && !PluginManager.isLoaded()) {
+                //支持Html5上传但处于跨域上传状态，也必须安装插件进行支持
+                html = '<div class="bigAttachUploadInfobar" style="padding: 5px 5px 6px 6px; margin:10px; line-height: 130%; width:350px; height: auto;">'
+                        + '<li style="margin:20px;">您的浏览器需要安装上传控件以支持跨域上传文件。</li>'
+                        + "<li style='margin:20px;'>使用新模式可同时上传多个文件，并支持断点续传和进度显示</li>"
+                        + "<li style='margin:20px;'>" + pluginInfo.createDownloadLinkForCMPlugin("立即安装邮箱控件", "text-decoration:underline") + "</li>"
+                        + '</div>';
+                return html;
+            } else if (!isSupportMutiSelect) {   //不支持HTML5方式且没有安装CM-Plugin
+                html = '<div class="bigAttachUploadInfobar" style="padding: 5px 5px 6px 6px; margin:10px; line-height: 130%; width:350px; height: auto;">'
+                        + '<li style="margin:20px;">您的浏览器暂不支持新模式上传到网络硬盘。<br/>(IE浏览器需要安装Coremail Plug-in 4.0以上版本,可支持IE6-10)其他支持浏览器有:Chrome6.0+, Firefox3.6+, Safari 5.1+<br/>不支持新模式的浏览器可选择[<a href="javascript:void(0);" id="nf_base_upload_mode">基本模式上传</a>]</li>'
+                        + "<li style='margin:20px;'>使用新模式可同时上传多个文件，并支持断点续传和进度显示</li>"
+                        + "<li style='margin:20px;'>" + pluginInfo.createDownloadLinkForCMPlugin("立即安装邮箱控件", "text-decoration:underline") + "</li>"
+                        + '</div>';
+            } else if (!isSupportMutiSelect && !PluginManager.isV4()) {   // 不支持HTML5方式且没有CM-Plugin的最新版本
+                html = '<div class="bigAttachUploadInfobar" style="padding: 5px 5px 6px 6px; margin:10px; line-height: 130%; width:350px; height: auto;">'
+                        + '<span style="font-weight: bold; color: rgb(0, 0, 0); line-height: 200%;">'
+                        + "您需要升级邮箱控件"       // 您需要升级邮箱控件
+                        + '</span>'
+                        + '<br/>'
+                        + "添加超大附件功能已升级。建议进行更新以获取最好体验。"    // 添加超大附件功能已升级。建议进行更新以获取最好体验。 -- 立即安装邮箱控件
+                        + '<br/>'
+                        + pluginInfo.createDownloadLinkForCMPlugin("立即安装邮箱控件", "text-decoration:underline")
+                        + '</div>';
+            } else {
+            
+                html = '<div id="bigFileUploadDiv" class="bigAttachUploadDiv">'
+                        + (overflow ? overflowMsg : '')
+                        + '<span style="display:block;padding-left:10px;'
+                        + (overflow ? 'display:none;' : '')
+                        + '">'
+                        + (crossDomain ? '' : '<div>如果电脑不能正常上传文件，可选择[<a href="javascript:void(0);" id="nf_base_upload_mode">基本模式上传</a>]</div>')
+                       + '<div style="margin:5px;">' + MN.selectUploadHtml + '</div>'
+                        + '<div id="bigFileUploadButton" style="width:70px; height:20px; float:left; text-align:center; position: relative;margin-top: 6px;">'
+                        + '<input id="divUploadAttachBigFile" type="file" multiple style="width:0;height:0; opacity:0; position:absolute; left:0"/>'
+                        + '<input type="button" style="width:70px; height:20px;" value="选择文件"/>'
+                        + '</div>'
+                        + '<b style="padding-left:10px;line-height:38px;">单个文件不可超过 1,000.00 M</b>'
+                        + '</span>'
+                        + '<div id="descBigFileUpload" class="bigAttachUploadContent" style="margin-top:10px;margin-bottom:10px;overflow:auto;overflow-x:hidden;overflow-y:scroll;">'
+                        + '<div id="detailBigFileUpload">'
+                        + '<div style="height:10px;width:100%">&nbsp;</div>'
+                        + '</div>'
+                        + '</div>'
+                        + '</div>';
+            }
+            return html;
+        }
+        function funInitDialog(selectedFid) {
+            PluginInfo.asyncLoad(function (pluginInfo) {
+                _funInitDialog(selectedFid, pluginInfo)
+            });
+        }
+        function _funInitDialog(selectedFid, pluginInfo) {
+            clearOpMsg();
+            if (!selector.dialog) {
+                if (initializing) return;
+                initializing = true;
+                try {
+                    var options = {
+                        button : "OK_CANCEL",
+                        title : gLang.nf.page["addnffile"],
+                        body : getHtml(pluginInfo),
+                        activate : function() {
+                            var bigFileUploadBtn = _$ui("bigFileUploadButton");
+                            if(bigFileUploadBtn) {
+                                var detailBigFileUpload = _$ui("detailBigFileUpload");
+                                function getFid() {
+                                    if (_$ui("netFolderSelectedUpload")) {
+                                        return  _$ui("netFolderSelectedUpload").value;
+                                    }
+                                    return 0;
+                                }
+                                // 优先控件方式上传
+                                if (PluginManager.isLoaded()) {
+                                    jQ(bigFileUploadBtn).click(function() {
+                                        TrsUpload.initTrsUpload(PluginManager.Upload_Type.Upload_NetFolder,
+                                                TrsUpload.UPDATE_TYPE.CALLBACK_FUNC,{
+                                                    fid:getFid(),
+                                                    enableSecurityLevel: false, // 是否显示密级信息
+                                                    selfSecurityLevel: false,     // 自身密级
+                                                    securityLevelSchema: null // 密级schema
+                                                },{
+                                                    
+                                                },true);
+                                        // firefox切换tab后，会导致插件对象遭到释放，因此需要重新加载插件对象div
+                                        // IE11 模仿了mozilla的UA，但执行修复的逻辑会出错，因此需要排除
+                                        var isIE = !!document.all || !!window.ActiveXObject || "ActiveXObject" in window;
+                                        if (jQ.browser.mozilla && !isIE) {
+                                            PluginManager.reloadPluginDiv(jQ,doSelect);
+                                        } else {
+                                            doSelect();
+                                        }
+                                        function doSelect() {
+                                            var ids = TrsUpload.addUploadFiles(false,_$ui(detailBigFileUpload));
+                                            if(ids.length > 0){
+                                                $win().$("netFolderSelectedUpload").disabled = "disabled";
+                                            }
+                                        }
+
+                                        return false;
+                                    });
+                                } else if (CMUpload.CMHasHTML5UploadByBigFile()) {
+                                    // 初始化内部一些变量
+                                    initUpload();
+                                    var fileInput = _$ui("divUploadAttachBigFile");
+                                    bigFileUploadBtn.onmouseover = function() {
+                                        fileInput.style.width = 70 + "px";
+                                        fileInput.style.height = 20 + "px";
+                                    };
+                                    bigFileUploadBtn.onmouseout = function() {
+                                        fileInput.style.width = 0 + "px";
+                                        fileInput.style.height = 0 + "px";
+                                    };
+                                    fileInput.onchange = function() {
+                                        CMUpload.CMSubmidDataIdsByBigFile(detailBigFileUpload, this.files, getFid());
+                                        _$ui("netFolderSelectedUpload").disabled = "disabled";
+                                    };
+                                }
+                            }
+                            var nfBaseUploadMode = _$ui("nf_base_upload_mode");
+                            if (nfBaseUploadMode) {
+                                nfBaseUploadMode.onclick = function() {
+                                    funHideDialog();
+                                    location.href = "/coremail/XT5/nf/new_upload.jsp?sid=DARzpyQQfJcQTGiNMyQQeeTAAWfsTttQ&view="
+                                            + "&fid=" + (selectedFid || 1194606);
+                                    return false;
+                                };
+                            }
+                        },
+                        actions : [
+                            confirmHandler(doBeforeCloseDialog), cancelHandler(doBeforeCloseDialog)
+                        ],
+                        showHide: true
+                    };
+                    selector.dialog = new UI.Dialog(options);
+                } finally {
+                    initializing = false;
+                }
+            } else {
+                funShowDialog();
+                CMUpload.CMUpdateFileStatusWhenDialogShow();
+            }
+            if (selectedFid && _$ui("netFolderSelectedUpload")) {
+                _$ui("netFolderSelectedUpload").value = selectedFid;
+            }
+        }
+
+        function doBeforeCloseDialog() {
+            var needReload = TrsUpload.queryStatesOfFiles([PluginManager.UploadItemState_Type.Finish ,
+                PluginManager.UploadItemState_Type.Uploading ,
+                PluginManager.UploadItemState_Type.Error,
+                PluginManager.UploadItemState_Type.FinishWithoutCRC]);
+
+            var hasFileUpload = CMUpload.CMHasFileUpload();
+            var files = [];
+            // 显示密级的情况下，更新文件的密级属性
+            if (false) {
+                if (needReload) { // 插件上传
+                    files = TrsUpload.getUploadFilesWithSLevel([PluginManager.UploadItemState_Type.Uploading, // 正在上传
+                        // PluginManager.UploadItemState_Type.Stopping,
+                        PluginManager.UploadItemState_Type.Error, // 出错，点击暂停之后文件状态会变为error
+                        PluginManager.UploadItemState_Type.Finish, // 完成
+                        PluginManager.UploadItemState_Type.FinishWithoutCRC]);
+                } else if (hasFileUpload) { // h5上传
+                    files = CMUpload.CMGetUploadFilesWithSLevel();
+                }
+            }
+            needReload = hasFileUpload || needReload;
+
+            TrsUpload.resetTrsUpload();
+            var detailBigFileUpload = _$ui("detailBigFileUpload");
+            if (detailBigFileUpload) {
+                detailBigFileUpload.innerHTML = "";
+            }
+            selector.dialog.cancel();
+            selector.dialog = null;
+            if(needReload) {
+                var reloadUrl = location.pathname + "?sid=DARzpyQQfJcQTGiNMyQQeeTAAWfsTttQ&fid=1194606&order=&desc=&view=";
+                if (files.length != 0) {
+                    new CMXClient().simpleCall("nf:updateFileInfos", {
+                        items: files
+                    }, function(){
+                        document.location = reloadUrl;
+                    });
+                } else {
+                    document.location = reloadUrl;
+                }
+            }
+        }
+
+        function funShowDialog() {
+            selector.dialog.show();
+        }
+
+        function funHideDialog() {
+            selector.dialog.hide();
+        }
+
+        function initUpload() {
+            // 初始化CMUpload一些变量
+            CMUpload.setSecurityLevelInfo(false, null, false);
+        }
+    }
+
+    /* 续传。只能在插件下 */
+    function resumeFileUpload(id, fid, filePath, crc, sLevel) {
+        if (PluginManager.isLoaded()) {
+            TrsUpload.initTrsUpload(PluginManager.Upload_Type.Upload_NetFolder,
+                    TrsUpload.UPDATE_TYPE.CALLBACK_FUNC,{
+                        fid: fid,
+                        enableSecurityLevel: false, // 是否显示密级信息
+                        selfSecurityLevel: false,     // 自身密级
+                        securityLevelSchema: null // 密级schema
+                    },{
+                        
+                    },true);
+
+            bigFileSelector.initDialog();
+            var detailBigFileUpload = _$ui("detailBigFileUpload");
+            TrsUpload.restoreUpload(filePath, crc, id, detailBigFileUpload, sLevel);
+        }
+    }
+
+    MN = {
+        more : [
+            'createFolder',
+            'downloadCurrent',
+            'property', 'viewShare'
+        ]
+    };
+    //--></script>
+    <script type="text/javascript"><!--
+        // read res_zh_CN.cf
+       var  gPabLang = gPabLang || {};
+        
+        
+
+        CC.sid = 'DARzpyQQfJcQTGiNMyQQeeTAAWfsTttQ';
+        
+
+        // 同步左边导航区域的当前选择
+        (function () {
+            if (!MM) {
+                try {
+                    if (typeof parent.setSelectMain != "function") {
+                        return;
+                    }
+
+                    parent.setSelectMain('/nf/list.jsp', null);
+                } catch (CORS) { /** access denied */ }
+            }
+        })();
+        var EnableShortCut = false;//是否开启快捷键
+
+        
+        
+    --></script>
+    <script type="text/javascript" src="./shortcut.js" charset="iso-8859-1"></script>
+
+
+<script charset="utf-8" src="./XT5.c2f53.js"></script></head>
+
+<body class="gMain">
+    
+    <div class="layout">
+        <div class="flow">
+            
+            
+                <div class="controls" id="headControlArea">
+                    <div class="fLeft">
+                        
+                            
+      
+      
+      
+      
+      
+
+
+    
+
+
+<div class="sigbtn_ns  sigbtn_ns_l " value="上 传" btnonclick="bigFileSelector.initDialog();" name="uploadBtn"><span>上 传</span>
+    
+</div><input name="uploadBtn" type="button" value="上 传" onclick="bigFileSelector.initDialog();" class="hidden-element">
+
+      
+          
+
+
+    
+
+
+<div class="sigbtn_ns disabled" value="下 载" forselection="+" btnonclick="submitControl(this);" name="action:download" errormessage="请选择你要下载的文件!" needdisable="true" extrachk="extraChkUploadComplete()"><span>下 载</span>
+    
+</div><input name="action:download" type="button" value="下 载" onclick="submitControl(this);" extrachk="extraChkUploadComplete()" errormessage="请选择你要下载的文件!" class="hidden-element">
+      
+      
+
+
+    
+
+
+<div class="sigbtn_ns disabled" value="删除" extraerrormessage="系统文件，无法删除" forselection="+" btnonclick="return confirmDelete(this, document.nfList);" name="deleteBtn" errormessage="请选择您要删除的文件!" needdisable="true" type="submit" extrachk="enableDelete()"><span>删除</span>
+    
+</div><input name="deleteBtn" type="submit" value="删除" onclick="return confirmDelete(this, document.nfList);" extrachk="enableDelete()" errormessage="请选择您要删除的文件!" class="hidden-element">
+      <div class="menubtn sigbtn_ns_l disabled" data-dropdown="moveto" disabled="disabled" role="dropdown">
+          <span>移动到</span><i class="iconfont icondown"></i>&nbsp;
+      </div>
+      <div class="menubtn sigbtn_ns_r" data-dropdown="more" role="dropdown">
+          <span>更多</span><i class="iconfont icondown"></i>&nbsp;
+      </div>
+      <form name="nfSearch" id="nfSearch" method="post" action="https://mail.tj.gov.cn/coremail/XT5/nf/list.jsp?sid=DARzpyQQfJcQTGiNMyQQeeTAAWfsTttQ" style="display:inline-block;">
+          <div class="enfListMailRightAction">
+            <span class="thumb v_switch">
+                
+
+
+
+
+
+
+
+  
+      
+        
+        
+            <a href="https://mail.tj.gov.cn/coremail/XT5/nf/list.jsp?sid=DARzpyQQfJcQTGiNMyQQeeTAAWfsTttQ&amp;view=thumbnail" title="" style="text-decoration:none;">
+                <span class="thumbnailModeView">&nbsp;</span>
+            </a>
+        
+      
+      
+  
+
+
+  
+      
+        
+        <span class="detailModeViewSelected">&nbsp;</span>
+        
+        
+      
+      
+  
+
+
+
+            </span>
+            <span style="float: left">
+                <input name="fid" value="1194606" type="hidden">
+                <input name="nf_search" value="nf_search" type="hidden">
+                <input id="WithChild" name="recursive" type="hidden" value="true">
+                
+
+
+<script type="text/javascript"><!--
+    function searchInputKeyup(event) {
+        event = event || window.event;
+        var $target = jQ(event.target || event.srcElement);
+        $target.parent().siblings('.closeSpanNs').toggleClass('hidden', !$target.val());
+        if (event.keyCode === 13) {
+            searchSubmit(event);
+        }
+    }
+
+    function searchSubmit(event) {
+        jQ(event.target || event.srcElement).parents('form').submit();
+    }
+//--></script>
+
+<div class="u-input-wrapper">
+    <span onclick="searchSubmit(event)" class="searchSpanNs"></span>
+    <span class="u-input-container">
+                        <input class="searchInputNs" onkeyup="searchInputKeyup(event)" name="keyword" id="keyword" value="" placeholder="搜索个人网盘文件">
+                    </span>
+    <span class="closeSpanNs hidden" onclick="$(&#39;keyword&#39;).value = &#39;&#39;;this.className += &#39; hidden&#39;;$(&#39;keyword&#39;).focus();"></span>
+</div>
+            </span>
+          </div>
+      </form>
+                        
+                    </div>
+                    <div class="fRight">
+                        
+                        
+                            <div class="fRight" id="pageNo" style="margin-top: -12px;"><div class="u-page u-page-round" data-current-page="0"><span class="u-page-btns"><button class="u-page-btn"><span class="u-page-btntext">1/1</span></button></span><a class="z-current u-page-prev" rel="prev"><span class="iconfont iconprevious"></span></a><a class="z-current u-page-next" rel="next"><span class="iconfont iconnext"></span></a></div></div>
+                        
+                    </div>
+
+                </div>
+            
+
+            
+            
+
+            
+
+            
+
+            
+                
+                
+                    <div class="txttitle" id="pageTitle">
+                        <div class="h2 fLeft">
+                            <h2>个人网盘</h2>
+                            <span id="titleTip">
+      <span>
+          1 个文件夹, 0 个文件
+          &nbsp;|&nbsp;
+          
+          
+
+
+
+
+    
+    
+        <span>
+            
+                
+                    容量:
+                
+                
+            
+        </span>
+        <span class="">
+            <span class="capacityBar">
+                <span style="width:0%"></span>
+            </span>
+        </span>
+        <span class="nfMaxSize">
+          
+0 B/
+          
+1.10 G
+        </span>
+    
+
+
+      </span> </span>
+                        </div>
+                    </div>
+                
+            
+
+            
+
+            <div class="scrollNav" id="scrollArea" style="width: 100%; height: 729px;">
+                
+                <div style="clear:both;" id="body_area">
+                    
+    <div class="nf">
+
+    </div>
+
+    <form method="post" name="nfList" action="https://mail.tj.gov.cn/coremail/XT5/nf/doAction.jsp?sid=DARzpyQQfJcQTGiNMyQQeeTAAWfsTttQ" id="nfList" needdisable="false">
+      <input type="hidden" name="currentFid" value="1194606">
+      <input type="hidden" id="bigFileName" name="fileName" value="">
+      <input type="hidden" name="bigfile" value="bigfile">
+      <input type="hidden" name="ctype" value="attach">
+      
+      <input type="hidden" name="name" value="个人网盘.zip">
+      
+      <input type="hidden" name="folderName">
+      <input type="hidden" id="newFolder" name="action:createfolder" value="">
+      <input type="hidden" id="delete" name="action:delete" value="">
+      <input type="hidden" id="action" name="action" value="">
+
+      <div class="nfPathInfo">
+          <span>路径：</span>
+          
+          
+          
+          
+              
+          
+          个人网盘
+      </div>
+      
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+        
+        
+        
+            
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+
+<div class="mfl-acc-listhead">
+    <table class="u-table u-table-row">
+        <thead>
+            <tr>
+                
+                
+                    <th class="col-chk">
+                        <input type="checkbox" name="selection_checkbox">
+                    </th>
+                
+                <th class="nficocol" width="1"></th>
+                <th class="crop">
+                    
+
+
+    
+    
+        
+    
+
+<a href="https://mail.tj.gov.cn/coremail/XT5/nf/list.jsp?sid=DARzpyQQfJcQTGiNMyQQeeTAAWfsTttQ&amp;order=name&amp;desc=" class="orderLink" title="">名称</a>
+                </th>
+                
+                
+
+                <th width="150" class="aLeft">
+                    
+
+
+    
+    
+        
+    
+
+<a href="https://mail.tj.gov.cn/coremail/XT5/nf/list.jsp?sid=DARzpyQQfJcQTGiNMyQQeeTAAWfsTttQ&amp;order=size&amp;desc=" class="orderLink" title="">大小</a>
+                </th>
+                <th width="120" class="aLeft">
+                    
+
+
+    
+    
+        
+    
+
+<a href="https://mail.tj.gov.cn/coremail/XT5/nf/list.jsp?sid=DARzpyQQfJcQTGiNMyQQeeTAAWfsTttQ&amp;order=date&amp;desc=false" class="orderLink" title="">上传时间<i class="ico arrowdown"></i></a>
+                </th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+      
+        <div class="nffile" data-name="我的文档" data-fid="10">
+        <table style="width:100%;">
+        
+        <tbody><tr>
+        
+        
+          <td class="nfchkcol">
+              
+              
+                  
+                  
+                      
+                      
+                      
+                      
+                      
+                  
+              
+
+              <input type="checkbox" name="fid" value="10" class="unDeleted unMoved" childcount="0" filecount="0">
+          </td>
+          
+          <td class="nficocol">
+            
+            
+              
+              
+                  <i class="bico bfFOLDER"></i>
+              
+            
+            
+          </td>
+          <td colspan="3">
+              <div class="fileName">
+                  
+                  <a href="https://mail.tj.gov.cn/coremail/XT5/nf/list.jsp?sid=DARzpyQQfJcQTGiNMyQQeeTAAWfsTttQ&amp;fid=10" title="我的文档">
+                      
+                          
+                          
+                              
+
+  
+  
+     
+         
+         
+             
+             
+             我的文档
+         
+     
+  
+
+
+                          
+                      
+                  </a>
+              </div>
+              <div class="bigFileOP">
+                  
+                      
+                          
+                          <span class="action-item">
+                            <a href="https://mail.tj.gov.cn/coremail/XT5/nf/edit_folder.jsp?sid=DARzpyQQfJcQTGiNMyQQeeTAAWfsTttQ&amp;fid=10">
+                              共享设置
+                            </a>
+                          </span>
+                      
+
+                      
+                      
+                      
+                      
+                          
+                          <span class="action-item">
+                              <a href="https://mail.tj.gov.cn/coremail/XT5/nf/doPackFiles.jsp?fid=10&amp;name=%e6%88%91%e7%9a%84%e6%96%87%e6%a1%a3.zip&amp;sid=DARzpyQQfJcQTGiNMyQQeeTAAWfsTttQ">
+                                  下载
+                              </a>
+                          </span>
+                          <span class="action-item">
+                              <a href="javascript:void(0);" class="xt5NfSendToShare">
+                                  分享
+                              </a>
+                          </span>
+                      
+                      
+                      
+                      
+                          <span class="action-item">
+                            <a href="javascript:void(0);" onclick="bigFileSelector.initDialog(10);">
+                              上传
+                            </a>
+                          </span>
+                      
+
+                      
+                      
+                      
+                          
+                          
+                              
+                          
+                      
+                      
+
+                      
+                      
+                  
+              </div>
+          </td>
+        </tr>
+       </tbody></table>
+          </div>
+      
+      
+      
+
+        
+    
+
+
+
+    </form>
+    <form action="https://mail.tj.gov.cn/coremail/XT5/nf/shareList.jsp?sid=DARzpyQQfJcQTGiNMyQQeeTAAWfsTttQ" id="viewShare" name="viewShare">
+        <input type="hidden" id="viewShareUid" name="uid" value="">
+        <input type="hidden" name="sid" value="DARzpyQQfJcQTGiNMyQQeeTAAWfsTttQ">
+    </form>
+    <!-- 插件 CM-Plugin对象 -->
+    <object id="cmplugin" type="application/x-cmplugin" width="0" height="0">
+      <param name="onload" value="pluginLoaded">
+    </object>
+  
+                </div>
+            </div>
+
+            
+
+            
+        </div>
+    </div>
+
+
+    <script type="text/javascript"><!--
+        jQ("a[totabid]").bind("click", function() {
+            return clickLink(this);
+        });
+        //初始化按钮
+        initSigbtn();
+
+        var contentSize = adjustScrollSize() || 0;
+        jQ(window).resize(adjustScrollSize);
+
+        function adjustScrollSize() {
+            var $ = jQ;
+            var iframeHeight = 0;
+
+            try {
+                if ($(parent.document).find(".j-layout-content").length > 0) {
+                    iframeHeight = Element.getDimensions($(parent.document).find(".j-layout-content").eq(0)[0]).height;
+                } else {
+                    iframeHeight = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight;
+                }
+            } catch (CORS) {
+                iframeHeight = window.innerHeight ? window.innerHeight : document.documentElement.clientHeight;
+            }
+
+            if (!wResize.isResized("fHeight", iframeHeight)) {
+                // 大部分页面调用resize都是改变元素的高度，这里会增加一个变量记录高度是否有变化
+                wResize.setMarkedValue("frameHeightChange", false);
+                return contentSize;
+            }
+            wResize.setMarkedValue("frameHeightChange", true);
+            /* layout padding : 10
+               control : 35 + 6
+               title
+               infoPanel : 20  + 16 + 10
+               copyright: 30
+               std std-compact : 33
+            */
+            var scrollHeight = iframeHeight - 10 - (($.browser.msie && $.browser.version == 6) ? 10 : 0);
+            
+                if (($("#headControlArea").length > 0 && Element.visible("headControlArea"))
+                        || ($("#toolbar").length > 0 && Element.visible("toolbar"))) {
+                    if ($(".previewLayout #headControlArea").length < 1) {    // 预览模式不需要减高度
+                        scrollHeight += 0 - 35 - 6 - (($.browser.msie && $.browser.version == 6) ? 6 : 0);
+                    }
+                }
+            
+            
+            
+            
+            
+                if ($("#pageTitle .oTitle").length > 0) {
+                    scrollHeight += 0 - 35;
+                } else {
+                    scrollHeight += 0 - 25;
+                }
+            
+            
+            
+                $("#scrollArea").css("height", scrollHeight + "px");
+            
+            return scrollHeight;
+        }
+    --></script>
+<!--[if lte IE 7]>
+    <script type="text/javascript" src="/coremail/common/assets/5d61e4c0/js/optionDisabledSupport.js" charset="iso-8859-1"></script>
+<![endif]-->
+<script type="text/javascript" src="./default.js" charset="iso-8859-1"></script>
+<script type="text/javascript" src="./select.js" charset="iso-8859-1"></script>
+    <script type="text/javascript"><!--
+
+    
+    __CM_Page_Mode__ = {mode : 'file'}; CM = JSON.parse(JSON.stringify(parent.CM));
+    
+    function init($, _, initPage, initFolders) {
+        initFolders(1194606);
+        initPage(1, 20, null, 'list.jsp?sid=DARzpyQQfJcQTGiNMyQQeeTAAWfsTttQ');
+        selection = initSelection($('#nfList'), 'fid', 'mid');
+        return $('#nfList');
+    }
+
+    //--></script>
+
+
+
+<div class="u-menu-dropdown" style="display: none;"><ul class="u-scroll u-menu" style="max-height: 310px; max-width: 300px; min-width: 100px;"><li class=" "><a class="f-csp" tabindex="-1"><span class="f-ib" style="width: 0px;"></span>新建文件夹</a></li><li class=" "><a class="f-csp" tabindex="-1"><span class="f-ib" style="width: 0px;"></span>下载个人网盘</a></li><li class=" "><a class="f-csp" tabindex="-1"><span class="f-ib" style="width: 0px;"></span>修改个人网盘</a></li><li class=" "><a class="f-csp" tabindex="-1"><span class="f-ib" style="width: 0px;"></span>查看站内用户共享</a></li></ul></div><div class="u-menu-dropdown" style="display: none;"><div class="u-menu" style="max-width: 300px; min-width: 100px;"><div class="u-input-control"><i class="iconfont iconsreachm"></i><span class="u-input-container"><input class="u-menu-search" placeholder="搜索文件夹" autocomplete="off"></span></div><ul class="u-scroll" style="max-height: 310px;"><li class=" "><a class="f-csp" tabindex="-1"><span class="f-ib" style="width: 0px;"></span>我的文档</a></li></ul></div></div></body></html>
